@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+    <style>
+        /* Center the container horizontally */
+        .container {
+            width: 100%; /* Adjust the width as needed */
+            margin: 0 auto; /* Center the container */
+        }
+
+        /* Styles for the table */
+        table {
+            width: 50%; /* Set the table width to 100% of its container */
+            border-collapse: collapse; /* Collapse table borders */
+        }
+
+        table, th, td {
+            border: 1px solid;
+            padding: 8px; /* Add some padding to cells for better readability */
+        }
+        th
+        { background-color:aqua;}
+    </style>
+</head>
+<body>
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="container">
+    <h2>Your Tasks</h2><br>
+    <table>
+        <tr>
+            <th>Task</th>
+            <th>Priority</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+        {% for i in res %}
+        <tr>
+            <td>{{i.task}}</td>
+            <td>{{i.priority}}</td>
+            <td>{{i.date}}</td>
+            <td><a href="{% url 'todoapp:delete' i.id %}" class="btn btn-success">Done</a>
+            <a href="{% url 'todoapp:update' i.id %}" class="btn btn-warning">Update</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
+</body>
+</html>

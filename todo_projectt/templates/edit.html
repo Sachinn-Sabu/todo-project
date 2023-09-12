@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EditView</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        form {
+            position: absolute;
+            top: 100px;
+            left: 40%;
+            width: 300px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        /* Style for the submit button */
+        .btn-success {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* Custom styling for form-group */
+        .form-group {
+            margin-bottom: 15px; /* Add spacing between form groups */
+        }
+
+        /* Style for labels */
+        label {
+            font-weight: bold; /* Make labels bold */
+            font-size: 14px; /* Adjust the font size */
+        }
+
+        /* Style for form inputs */
+        input[type="text"],
+        input[type="date"],input[type="number"] {
+            width: 100%; /* Make input fields occupy the full width of their container */
+            padding: 8px; /* Add some padding to the input fields */
+            font-size: 14px; /* Adjust the font size */
+            border: 1px solid #ccc; /* Add a border to the input fields */
+            border-radius: 3px; /* Apply border radius for a rounded appearance */
+        }
+    </style>
+</head>
+<body>
+{% extends 'base.html' %}
+{% block body %}
+
+<form method="POST">
+    {% csrf_token %}
+    <center><h3>UPDATE</h3></center>
+    <div class="form-group">
+        <label for="{{ form.task.id_for_label }}">Task:</label>
+        {{ form.task }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.priority.id_for_label }}">Priority:</label><br>
+        {{ form.priority }}
+    </div>
+    <div class="form-group">
+        <label for="{{ form.date.id_for_label }}">Date:</label>
+        {{ form.date }}
+    </div>
+    <input type="submit" class="btn btn-success" value="Update">
+</form>
+
+{% endblock %}
+</body>
+</html>

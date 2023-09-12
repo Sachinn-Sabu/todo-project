@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail View</title>
+</head>
+<body>
+{% extends 'base.html' %}
+{% block body %}
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{res.task}}</h5>
+    <p class="card-text">{{res.priority}}</p>
+      <p class="card-text">{{res.date}}</p>
+    <a href="{% url 'todoapp:delete' res.id %}" class="btn btn-primary">Done</a>
+      <a href="{% url 'todoapp:updateview' res.id %}" class="btn btn-primary">Update</a>
+
+  </div>
+</div>
+{% endblock %}
+</body>
+</html>
